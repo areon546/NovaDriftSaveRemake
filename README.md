@@ -4,4 +4,4 @@ this is a tool that would be used to remake lost save files in the oh so popular
 user guide: 
 this wont exist until the project is in a publishable state
 
-(plan)[plan.md]
+[plan](plan.md)
