@@ -35,3 +35,7 @@ elements in the save file:
  - base64Name
 
 
+The file will be written from a dictionary where the term and definition are appended together once edited. 
+Scores will be stored seperately and it will always write to 10 even if there is nothing there. 
+
+
