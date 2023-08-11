@@ -19,14 +19,14 @@ if __name__ == '__main__':
     
     print("worked")
     sw.resetSave()
-"""
-    sw.buildHighScores(di.scoreStats1, di.scoreStats2, 
-          di.scoreStats3, di.scoreStats4, 
-          di.scoreStats5, di.scoreStats6, 
-          di.scoreStats7, di.scoreStats8, 
-          di.scoreStats9, di.scoreStats10)
+    """
+        sw.buildHighScores(di.scoreStats1, di.scoreStats2, 
+            di.scoreStats3, di.scoreStats4, 
+            di.scoreStats5, di.scoreStats6, 
+            di.scoreStats7, di.scoreStats8, 
+            di.scoreStats9, di.scoreStats10)
 
-"""
+    """
     if (main):    
         print("""
     Do you want an empty save file or do you wanna customise your own save file?
