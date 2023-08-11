@@ -2,6 +2,7 @@ print("a")
 
 import saveWrite as sw
 import dics as di
+import overallVars as oV
 
 nSettings = di.settings
 nGameMods = di.gameMods
@@ -13,20 +14,17 @@ scores = [di.scoreStats1, di.scoreStats2,
           di.scoreStats7, di.scoreStats8, 
           di.scoreStats9, di.scoreStats10]
 
-main = True
+main = oV.main
 
 if __name__ == '__main__':
     
     print("worked")
     sw.resetSave()
-    """
-        sw.buildHighScores(di.scoreStats1, di.scoreStats2, 
-            di.scoreStats3, di.scoreStats4, 
-            di.scoreStats5, di.scoreStats6, 
-            di.scoreStats7, di.scoreStats8, 
-            di.scoreStats9, di.scoreStats10)
+    
+    if (not main):
+            print("Not Main.")
 
-    """
+    
     if (main):    
         print("""
     Do you want an empty save file or do you wanna customise your own save file?
@@ -57,7 +55,8 @@ if __name__ == '__main__':
 
 
 
-    """)
+    """)    
+            # TODO add selection structure to presets
             sw.emptySave()
 
         elif (userChoice=='C'):

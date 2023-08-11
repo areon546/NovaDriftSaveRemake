@@ -80,3 +80,4 @@ ok so
 
 - id want this to be a website. 
 
+- when adding builds, it will have to add newer ones above if they had a higher score, and below if they had a lower score

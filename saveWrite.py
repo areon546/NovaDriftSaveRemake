@@ -6,12 +6,14 @@
 ###############################
 
 import dics as di
+import overallVars as oV
 
 
+debug = oV.debug
 
 
 # write save collates all of the dictionaries and
-def writeSave(settings=di.getSettings(), 
+def writeSave(settings=di.getSettings(),  # TODO finish writeSave
         gameMods=di.getGameMods(), acc=di.getAcc(), 
         highscores=di.getHigh(), 
         scoreStats=di.getScoreStatsA()):
@@ -25,37 +27,37 @@ def writeSave(settings=di.getSettings(),
     with open("save.ini", "a") as saveF:
         saveF.write("Hi. ")
 
-def resetSave():
-    with open("save.ini", "w") as saveF:
-        saveF.write("")
+
+def sortScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10):
+    scoresA = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10]
+
+    # sort array, desc, high to low. if curr smaller, swap
+    for i in range(0,10):
+        for j in range(0,9-i):
+            # check if j+1 < j
+
+            # if the next one is smaller, swap
+            if (scoresA[j]["score"] < scoresA[j+1]["score"]):
+                # swap
+                temp = scoresA[j+1]
+                scoresA[j+1] = scoresA[j]
+                scoresA[j] = temp
+    
+    return scoresA
+
 
 def buildHighScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10): # these are the dictionaries
     # bubble or insertion sort    
     # get scores into an array
     scores = di.getHigh()
-    scoresA = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10]
-    
-    # sort array, desc, high to low. if curr smaller, swap
 
-    for i in range(0,10):
-        for j in range(i,9):
-            # check if j+1 < j
-            print("j " + scoresA[j]["score"])
-            print("j+1 " + scoresA[j+1]["score"]) # TODO figure out a away to convert numbers into floats.
-            # if it doesnt work, then i have to cast the strings into floats
-            print((scoresA[j+1]["score"] < scoresA[j]["score"]))
-            if (scoresA[j+1]["score"] < scoresA[j]["score"]):
-                # swap
-                temp = scoresA[j+1]
-                scoresA[j+1] = scoresA[j]
-                scoresA[j] = temp
+    scoresA = sortScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10)
 
     # write to the highscores 
-    for i in range(1, 11):
-        scores[f"score{i}"] = scoresA[i]["score"]
+    for i in range(0, 9):
+        scores[f"score{i+1}"] = scoresA[i]["score"]
 
-    return scores               
-
+    di.setHigh(scores)            
 
 
 
@@ -201,4 +203,15 @@ averageDamage="0.000000"
 distance="0.000000"
 score="0.000000"\n""")
     print("Default Written. ")
+
+
+def resetSave(): # clears the save.ini file
+    with open("save.ini", "w") as saveF:
+        saveF.write("")
+
+
+
+
+
+
 

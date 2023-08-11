@@ -1,0 +1,2 @@
+main = True
+debug = False
