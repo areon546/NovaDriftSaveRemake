@@ -41,7 +41,8 @@ def buildHighScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10): # these are the di
         for j in range(i,9):
             # check if j+1 < j
             print("j " + scoresA[j]["score"])
-            print("j+1 " + scoresA[j+1]["score"]) # TODO figure out a away to convert numbers into floats
+            print("j+1 " + scoresA[j+1]["score"]) # TODO figure out a away to convert numbers into floats.
+            # if it doesnt work, then i have to cast the strings into floats
             print((scoresA[j+1]["score"] < scoresA[j]["score"]))
             if (scoresA[j+1]["score"] < scoresA[j]["score"]):
                 # swap
