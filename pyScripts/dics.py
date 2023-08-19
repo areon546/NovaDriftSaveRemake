@@ -6,6 +6,54 @@
 
 
 
+def getCustKey():
+    return customKeys
+def getSettings():
+    return settings
+def getGameMods():
+    return gameMods
+def getAcc():
+    return account
+def getHigh():
+    return highscores
+
+def setHigh(scores):
+    highscores = scores
+
+def getScoreStatsA():
+    return scoresA
+
+def setScoresStatsA(nScores):
+    scoresA = nScores
+
+
+
+
+# TODO make the adding builds functionality one based on classes
+"""
+class Highscore:
+    scoresA = [scoreStats1, scoreStats2,
+                scoreStats3, scoreStats4, 
+                scoreStats5, scoreStats6, 
+                scoreStats7, scoreStats8, 
+                scoreStats9, scoreStats10]
+    
+    minScore = 0 # this contains the minimum score here
+    numScores = 0 # this is the next index of scoresA
+
+    def addScore(score):
+        # this method will add a 
+        this.scoresA[this.numScores] = score
+"""    
+
+
+
+
+
+
+
+############################################################################
+
 customKeys = {
 "formationKey" : 9.00000,
 "construct5Key" : 53.00000,
@@ -307,30 +355,9 @@ scoreStats10 = {
 "score" : 0.00000
 }
 
-def getCustKey():
-    return customKeys
-def getSettings():
-    return settings
-def getGameMods():
-    return gameMods
-def getAcc():
-    return account
-def getHigh():
-    return highscores
-
-def setHigh(scores):
-    highscores = scores
-
-def getScoreStatsT():
-    return (scoreStats1, scoreStats2, 
+scoresA = [scoreStats1, scoreStats2,
             scoreStats3, scoreStats4, 
-            scoreStats5, scoreStats5, 
-            scoreStats7, scoreStats8, 
-            scoreStats9, scoreStats10)
-
-def getScoreStatsA():
-    return [scoreStats1, scoreStats2, 
-            scoreStats3, scoreStats4, 
-            scoreStats5, scoreStats5, 
+            scoreStats5, scoreStats6, 
             scoreStats7, scoreStats8, 
             scoreStats9, scoreStats10]
+

@@ -78,6 +78,6 @@ ok so
   - each line of the CSV file is a different section
 
 
-- id want this to be a website. 
+- my ultimate plan is a website like alicemetic
 
-- when adding builds, it will have to add newer ones above if they had a higher score, and below if they had a lower score
+- when adding builds, it will have to add newer ones above if they had a higher score, and below if they had a lower score - no, not anymore as i can just have it sort the builds at the end. i just need to have a counter. maybe i could have a class called "highscores" to which i have an array that can hold up to ten objects, and upon object addition then the highscores list gets sorted. it would also have to check 

@@ -5,7 +5,7 @@
 # 
 ###############################
 
-import dics as di
+import pyScripts.dics as di
 import overallVars as oV
 
 
@@ -43,10 +43,12 @@ def sortScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10):
                 scoresA[j+1] = scoresA[j]
                 scoresA[j] = temp
     
+    di.setScoresStatsA(scoresA)
     return scoresA
 
 
-def buildHighScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10): # these are the dictionaries
+
+def buildHighScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10): # sets the high score list 
     # bubble or insertion sort    
     # get scores into an array
     scores = di.getHigh()
