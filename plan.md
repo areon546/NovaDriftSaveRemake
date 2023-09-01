@@ -62,11 +62,6 @@ Scores will be stored seperately and it will always write to scoreStats10 even i
 bare minimum logic
 - command line (tedious)
 
-
-
-
-
-
 goal
 - menu / graphical (difficult)
 
@@ -80,4 +75,23 @@ ok so
 
 - my ultimate plan is a website like alicemetic
 
-- when adding builds, it will have to add newer ones above if they had a higher score, and below if they had a lower score - no, not anymore as i can just have it sort the builds at the end. i just need to have a counter. maybe i could have a class called "highscores" to which i have an array that can hold up to ten objects, and upon object addition then the highscores list gets sorted. it would also have to check 
+- when adding builds, it will have to add newer ones above if they had a higher score, and below if they had a lower score - no, not anymore as i can just have it sort the builds at the end. i just need to have a counter. maybe i could have a class called "highscores" to which i have an array that can hold up to ten objects, and upon object addition then the highscores list gets sorted. it would also have to check
+
+
+What do i need to do?
+- create a way of editing the accounts
+- create a way of adding scores
+- editing settings? no
+- editing game mods? no
+- create a way of editing the keyboard settings, however this may be difficult
+
+
+### editing accounts
+- accountEXP - total xp so far? id need to recheck the questions i asked the devs
+- levelEXP - xp required to increase lvl
+- accountLevel - rank
+- lifetimeScore - total score
+
+so far i only see reason to edit accountLevel and lifetimeScore however im not sure if editing scores actually edits the variable values, and while it should, i also dont have a way to write them to a file. 
+
+### adding scores

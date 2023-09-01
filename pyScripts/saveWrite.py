@@ -13,16 +13,31 @@ debug = oV.debug
 
 
 # write save collates all of the dictionaries and
-def writeSave(settings=di.getSettings(),  # TODO finish writeSave
+def writeSave(keys=di.getCustKey(), settings=di.getSettings(),  # TODO finish writeSave
         gameMods=di.getGameMods(), acc=di.getAcc(), 
-        highscores=di.getHigh(), 
-        scoreStats=di.getScoreStatsA()):
-    # keys
-    # settings
-    # gameMods
-    # acc
-    # highscores
-    # scoreStats
+        highscores=di.getHigh(), scoreStats=di.getScoreStatsA()):
+
+    # writes the keybinds to the save file
+    writeDictionary(dictionary=keys,title="[customKeys]")
+    
+    # writes the settings to the save file
+    writeDictionary(dictionary=settings, title="[settings]")
+
+    # writes gameMods to the save file
+    writeDictionary(dictionary=gameMods,title="[gameMods]")
+
+    # writes the account info to the save file
+    writeDictionary(dictionary=acc,title="[account]")
+
+    # writes the highscores to the save file
+    writeDictionary(dictionary=highscores,title="[highscores]")
+
+    # writes the scoreStats to the save file
+     # iterate through score stats
+     # write each one to the save file with iterative titles
+    for i in range(1,11):
+        writeDictionary(dictionary=scoreStats[i],title=f"[scoreStats{i}]")
+
 
     with open("save.ini", "a") as saveF:
         saveF.write("Hi. ")
@@ -63,7 +78,7 @@ def buildHighScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10): # sets the high sc
 
 
 
-def writeDictionary(file="save.ini", rw="w", dictionary={}, style=""):
+def writeDictionary(dictionary, file="save.ini", rw="a", style="=", title=""):
     keys = dictionary.getKeys()
     values = dictionary.getValues()
     maxI = keys.length()
@@ -71,13 +86,11 @@ def writeDictionary(file="save.ini", rw="w", dictionary={}, style=""):
 
     with open(file, rw) as f:
         # while loop here to loop through all of the keys and values in 'dictionary'
-        while i<maxI:
-            f.write(keys[i])
+        f.write(title)
 
-            if(values[i].type()!=str):
-                f.write(f"{values[i]}")
-            else:
-                f.write(values[i])
+        while i<maxI:
+            f.write(f"{keys[i]}{style}{values[i]}\n")
+
             i+=1
             # ok but now the titles. this is enought to be able to write most of it but the titles
             # wait dont i already have this infrastructure somewhere?

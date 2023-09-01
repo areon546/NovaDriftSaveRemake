@@ -72,7 +72,7 @@ gameMods = {
 }
 account = {
 "accountEXP" : 0.00000,
-"levelEXP" : 0.,
+"levelEXP" : 0.0000,
 "accountLevel" : 0.00000,
 "lifetimeScore" : 0.00000
 }

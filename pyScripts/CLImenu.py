@@ -12,6 +12,8 @@ scoresA = [di.scoreStats1, di.scoreStats2,
             di.scoreStats7, di.scoreStats8, 
             di.scoreStats9, di.scoreStats10]
 
+
+
 def mainMenu():
     sw.resetSave()
 
@@ -92,6 +94,8 @@ Chose a preset below:
         mainMenu()
     elif (userInput=='1'):
         sw.emptySave()
+    elif (userInput=='2'):
+        sw.writeSave()
 
 
 
