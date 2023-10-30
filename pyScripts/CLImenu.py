@@ -66,15 +66,31 @@ until you writing to the file.
     # #####################
 
 
-    
-    
-    if (userInput=='0'):
+    if (userInput=='1'):
+        # Make Build
+        makeBuild()
+    elif (userInput=='2'):
+        # Debug Import
+    elif (userInput=='2'):
+        # Alicemetic Import
+    elif (userInput=='0'):
         mainMenu()
     elif (userInput=='9'):
         # writes to save.ini
+        # oh yeah TODO add a system that tells the user if they have not added something for everything
+        # TODO bare minimum for acceptable build is high score info 
         sw.writeSave(nSettings, nGameMods, nAccount, nHighscores, scoresA)
         print("Now check the directory you ran this from. You'll find your save there. ")
         
+def makeBuild():
+    print("")
+    # ok so what are the requirements of a build?
+    # high score info
+        # distance, avg dmg, total dmg, highest dmg, wave, lvl, name, 
+    # a mod list
+    # a name
+    # body gears (i can make them choose 1 in each of WBS)
+    # game mod, eg wild, anni, draft, 
     
 
 
@@ -95,6 +111,7 @@ Chose a preset below:
     elif (userInput=='1'):
         sw.emptySave()
     elif (userInput=='2'):
+        nAccount["accountLevel"] = 60.00000
         sw.writeSave()
 
 

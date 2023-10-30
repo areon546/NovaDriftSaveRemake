@@ -35,7 +35,7 @@ def writeSave(keys=di.getCustKey(), settings=di.getSettings(),  # TODO finish wr
     # writes the scoreStats to the save file
      # iterate through score stats
      # write each one to the save file with iterative titles
-    for i in range(1,11):
+    for i in range(0,10):
         writeDictionary(dictionary=scoreStats[i],title=f"[scoreStats{i}]")
 
 
@@ -79,26 +79,14 @@ def buildHighScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10): # sets the high sc
 
 
 def writeDictionary(dictionary, file="save.ini", rw="a", style="=", title=""):
-    keys = dictionary.getKeys()
-    values = dictionary.getValues()
-    maxI = keys.length()
     i=0
 
     with open(file, rw) as f:
         # while loop here to loop through all of the keys and values in 'dictionary'
-        f.write(title)
+        f.write(f"{title}\n")
 
-        while i<maxI:
-            f.write(f"{keys[i]}{style}{values[i]}\n")
-
-            i+=1
-            # ok but now the titles. this is enought to be able to write most of it but the titles
-            # wait dont i already have this infrastructure somewhere?
-            # at i=0 i wanna write the title
-            # at every other i value i wanna write keys[i] = values[i]
-            # at the last i value (iMax-1) i wanna write \n
-
-
+        for i in dictionary:
+            f.write(f"{i}{style}{dictionary[i]}\n")
 
 
 
