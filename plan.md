@@ -1,6 +1,29 @@
 
 
 
+## Requirements for a Build
+- name
+- level reached
+- wave reached
+- score
+- distance
+- averageDamage
+- highestDamage
+- totalDamage
+- mod list
+- gameModifiers
+
+
+
+
+
+
+
+
+
+## Questions for me
+
+
 what will my program do?
   - let me rebuild a save file within minutes, if enough screenshots exist for it to be done manually
    - it will be done manually by the user, no image processing. 

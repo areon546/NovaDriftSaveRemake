@@ -5,90 +5,20 @@
 # 
 ###############################
 
-import pyScripts.dics as di
-import overallVars as oV
-
+import superGlobals as oV
+import pyScripts.SaveFile as sF
 
 debug = oV.debug
 
 
 # write save collates all of the dictionaries and
-def writeSave(keys=di.getCustKey(), settings=di.getSettings(),  # TODO finish writeSave
-        gameMods=di.getGameMods(), acc=di.getAcc(), 
-        highscores=di.getHigh(), scoreStats=di.getScoreStatsA()):
-
-    # writes the keybinds to the save file
-    writeDictionary(dictionary=keys,title="[customKeys]")
-    
-    # writes the settings to the save file
-    writeDictionary(dictionary=settings, title="[settings]")
-
-    # writes gameMods to the save file
-    writeDictionary(dictionary=gameMods,title="[gameMods]")
-
-    # writes the account info to the save file
-    writeDictionary(dictionary=acc,title="[account]")
-
-    # writes the highscores to the save file
-    writeDictionary(dictionary=highscores,title="[highscores]")
-
-    # writes the scoreStats to the save file
-     # iterate through score stats
-     # write each one to the save file with iterative titles
-    for i in range(0,10):
-        writeDictionary(dictionary=scoreStats[i],title=f"[scoreStats{i}]")
-
-
+# def writeSave(save: SaveFile):
+def writeSave(save : sF.SaveFile):
+    # write the save file
     with open("save.ini", "a") as saveF:
-        saveF.write("Hi. ")
-
-
-def sortScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10):
-    scoresA = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10]
-
-    # sort array, desc, high to low. if curr smaller, swap
-    for i in range(0,10):
-        for j in range(0,9-i):
-            # check if j+1 < j
-
-            # if the next one is smaller, swap
-            if (scoresA[j]["score"] < scoresA[j+1]["score"]):
-                # swap
-                temp = scoresA[j+1]
-                scoresA[j+1] = scoresA[j]
-                scoresA[j] = temp
-    
-    di.setScoresStatsA(scoresA)
-    return scoresA
-
-
-
-def buildHighScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10): # sets the high score list 
-    # bubble or insertion sort    
-    # get scores into an array
-    scores = di.getHigh()
-
-    scoresA = sortScores(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10)
-
-    # write to the highscores 
-    for i in range(0, 9):
-        scores[f"score{i+1}"] = scoresA[i]["score"]
-
-    di.setHigh(scores)            
-
-
-
-def writeDictionary(dictionary, file="save.ini", rw="a", style="=", title=""):
-    i=0
-
-    with open(file, rw) as f:
-        # while loop here to loop through all of the keys and values in 'dictionary'
-        f.write(f"{title}\n")
-
-        for i in dictionary:
-            f.write(f"{i}{style}{dictionary[i]}\n")
-
-
+        saveF.write(f"{save}")
+        if debug:
+            print("Save Written. ")
 
 def emptySave(): # creates a 'clean' save
     with open("save.ini", "w") as eSave:
@@ -207,7 +137,6 @@ averageDamage="0.000000"
 distance="0.000000"
 score="0.000000"\n""")
     print("Default Written. ")
-
 
 def resetSave(): # clears the save.ini file
     with open("save.ini", "w") as saveF:

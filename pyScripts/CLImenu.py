@@ -1,119 +1,121 @@
 import pyScripts.saveWrite as sw
+import pyScripts.SaveFile as sF
 import pyScripts.dics as di
-import overallVars as oV
-
-nSettings = di.settings
-nGameMods = di.gameMods
-nAccount = di.account
-nHighscores = di.highscores
-scoresA = [di.scoreStats1, di.scoreStats2, 
-            di.scoreStats3, di.scoreStats4, 
-            di.scoreStats5, di.scoreStats6, 
-            di.scoreStats7, di.scoreStats8, 
-            di.scoreStats9, di.scoreStats10]
+import superGlobals as oV
 
 
 
-def mainMenu():
-    sw.resetSave()
+class CLI:
+    save = sF.SaveFile()
 
-    userInput = input("""
+    def mainMenu():
+        sw.resetSave()
+
+        userInput = input("""
 Do you want an empty save file or do you wanna customise your own save file?
 
 A) Custom Save File
 B) Preset
 
 Z) EXIT
-    """).upper()
+""").upper()
 
-    if (userInput=='A'): # CUSTOM
-        makeCustom()
+        if (userInput=='A'): # CUSTOM
+            CLI.makeCustom()
 
-    elif (userInput=='B'): # Presets
-        choosePreset()
+        elif (userInput=='B'): # Presets
+            CLI.choosePreset()
 
-    elif (userInput=='Z'):
-        print("Goodbye. Hope to see you soon. ")
+        elif (userInput=='Z'):
+            print("Goodbye. Hope to see you soon. ")
+            return
 
 
-def makeCustom(): # TODO create custom CLI and make those decisions and stuff
-    userInput = input("""
+    def makeCustom(): # TODO create custom CLI and make those decisions and stuff
+        message = ""
+        userInput = input(f"""
 Now creating a new save file. Warning, the program will not save your progress 
-until you writing to the file.
+until you choose 'Write to file'.
 
-1. Make build
-2. Import from Debug
-3. Import from Alicemetic
+{message}
 
-9. Write to file. 
-0. Back
+1. Make Custom Save File
+2. Add new Build
+3. Import from Debug CSV
+4. Import from Alicemetic
 
-""")
+0. Write to file. 
+    """)
 
-    ########################
-    # adding high scores / build
-    #  - each time the highscores dic will be sorted
-    #  - will also have to have a minimum. 
-    #     - in fact lets make the highscores dic a class
-    # adding imports
-    # 
-    # 
-    # 
-    # 
-    # 
-    #  
-    # 
-    # #####################
+        ########################
+        # adding high scores / build
+        #  - each time the highscores dic will be sorted
+        #  - will also have to have a minimum. 
+        #     - in fact lets make the highscores dic a class
+        # adding imports
+        # 
+        # 
+        # 
+        # 
+        # 
+        #  
+        # 
+        # #####################
 
 
-    if (userInput=='1'):
-        # Make Build
-        makeBuild()
-    elif (userInput=='2'):
-        # Debug Import
-    elif (userInput=='2'):
-        # Alicemetic Import
-    elif (userInput=='0'):
-        mainMenu()
-    elif (userInput=='9'):
-        # writes to save.ini
-        # oh yeah TODO add a system that tells the user if they have not added something for everything
-        # TODO bare minimum for acceptable build is high score info 
-        sw.writeSave(nSettings, nGameMods, nAccount, nHighscores, scoresA)
-        print("Now check the directory you ran this from. You'll find your save there. ")
-        
-def makeBuild():
-    print("")
-    # ok so what are the requirements of a build?
-    # high score info
-        # distance, avg dmg, total dmg, highest dmg, wave, lvl, name, 
-    # a mod list
-    # a name
-    # body gears (i can make them choose 1 in each of WBS)
-    # game mod, eg wild, anni, draft, 
+        if (userInput=='1'):
+            # Make Build
+            CLI.makeSaveFile()
+        elif (userInput=='2'):
+            # Make build
+            CLI.makeBuild()
+        elif (userInput=='3'):
+            # Debug Import
+            pass
+        elif (userInput=='4'):
+            # Alicemetic Import
+            CLI.importSaveFromAlicemetic()
+        elif (userInput=='0'):
+            # writes to save.ini
+            # oh yeah TODO add a system that tells the user if they have not added something for everything
+            # TODO bare minimum for acceptable build is high score info 
+            sw.writeSave(CLI.save)
+            print("Now check the directory you ran this from. You'll find your save there. ")
+            
+    def makeSaveFile():
+        CLI.save.generateSave()
+        print("build made")
+        CLI.makeCustom()
+        return
     
-
-
-def choosePreset(): 
-    # TODO add selection structure to presets
-    # TODO add more presets
-    # TODO set up a way to have presets
-    userInput = input("""
+    def makeBuild():
+        CLI.save.generateBuild()
+        CLI.makeCustom()
+        return
+        
+    def choosePreset():
+        presetMap = {
+            "1": "empty",
+            "2": "clean60"
+        }
+        
+        userInput = input("""
 Chose a preset below:
 1. Empty
 2. Clean Rank 60 (All Unlocks, otherwise empty)
 
 0. Back
-""")
-    
-    if (userInput=='0'):
-        mainMenu()
-    elif (userInput=='1'):
-        sw.emptySave()
-    elif (userInput=='2'):
-        nAccount["accountLevel"] = 60.00000
-        sw.writeSave()
+    """)
+        
+        if (userInput=='0'):
+            CLI.mainMenu()
+        elif (presetMap.get(userInput)!=None):
+            CLI.save.setPreset(presetMap.get(userInput))
+        else:
+            # ask about 
+            print("Invalid input. Try Again")
+            CLI.choosePreset()
 
-
-
-
+    # TODO make a parser from https://alicemetic.github.io/nova-drift-cheatsheet/ to a build
+    def importSaveFromAlicemetic():
+        pass
